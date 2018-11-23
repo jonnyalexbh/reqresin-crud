@@ -2,22 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\ConsumesExternalService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    use ConsumesExternalService;
-
-    public $baseUri;
+    public $userService;
 
     /**
      * __construct
      *
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
-        $this->baseUri = config('services.reqresin.base_uri');
+        $this->userService = $userService;
     }
 
     /**
@@ -27,8 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->performRequest('GET', '/api/users');
-        return response($users, 200)->header('Content-Type', 'application/json');
+        return response($this->userService->obtainUsers(), 200)->header('Content-Type', 'application/json');
     }
 
     /**
