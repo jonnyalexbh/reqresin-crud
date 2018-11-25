@@ -65,7 +65,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = json_decode($this->userService->obtainUser($id));
+        $user = $user->data;
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -99,6 +101,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->userService->destroyUser($id);
+
+        return redirect()->route('users')
+            ->with('success', 'User deleted successfully');
     }
 }

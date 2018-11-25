@@ -27,4 +27,22 @@ class UserService
     {
         return $this->performRequest('GET', '/api/users?page=' . $page);
     }
+
+    /**
+     * Obtain one single user
+     * @return string
+     */
+    public function obtainUser($user)
+    {
+        return $this->performRequest('GET', "/api/users/{$user}");
+    }
+
+    /**
+     * Destroy user
+     * @return string
+     */
+    public function destroyUser($user)
+    {
+        return $this->performRequest('DELETE', "/api/users/{$user}");
+    }
 }

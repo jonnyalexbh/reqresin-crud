@@ -13,8 +13,8 @@
     <body>
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">
-                <img src="{{asset('images/api.jpeg')}}" width="30" height="30"
+            <a class="navbar-brand" href="{{ route('users') }}">
+                <img src="{{ asset('images/api.jpeg') }}" width="30" height="30"
                     alt="">
                 Crud Users
             </a>
@@ -27,8 +27,8 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" routerLinkActive="active">
-                        <a class="nav-link" routerLink="home">Users</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users') }}">Users</a>
                     </li>
                 </ul>
             </div>

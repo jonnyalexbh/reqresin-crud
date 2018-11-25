@@ -12,4 +12,6 @@
  */
 
 Route::redirect('/', '/users');
-Route::get('users', 'UserController@index');
+Route::get('users', 'UserController@index')->name('users');
+Route::get('user/{id}', 'UserController@show')->name('user.show');
+Route::get('user-destroy/{id}', 'UserController@destroy')->name('user.destroy');
