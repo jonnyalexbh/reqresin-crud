@@ -23,8 +23,8 @@ class UserService
      * Obtain the full list of users
      * @return string
      */
-    public function obtainUsers()
+    public function obtainUsers($page)
     {
-        return $this->performRequest('GET', '/api/users');
+        return $this->performRequest('GET', '/api/users?page=' . $page);
     }
 }

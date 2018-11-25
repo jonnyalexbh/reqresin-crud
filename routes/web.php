@@ -11,8 +11,5 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::redirect('/', '/users');
 Route::get('users', 'UserController@index');

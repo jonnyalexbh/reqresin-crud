@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 
 class UserController extends Controller
 {
@@ -23,9 +24,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response($this->userService->obtainUsers(), 200)->header('Content-Type', 'application/json');
+        $data = json_decode($this->userService->obtainUsers($request->page));
+
+        $users = new Paginator($data->data, $data->total, $data->per_page, $data->page, [
+            'path' => $request->url(),
+            'query' => $request->query(),
+        ]);
+
+        return view('users.index', compact('users'));
     }
 
     /**
