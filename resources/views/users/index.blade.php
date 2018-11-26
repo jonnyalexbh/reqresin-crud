@@ -7,7 +7,8 @@
 </div>
 @endif
 
-<a class="btn btn-link text-left" href="">Create New User</a>
+<a class="btn btn-link text-left" href="{{ route('user.create') }}">Create New
+    User</a>
 
 <table class="table table-striped">
     <thead>

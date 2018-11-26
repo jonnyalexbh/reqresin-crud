@@ -38,6 +38,15 @@ class UserService
     }
 
     /**
+     * Store user
+     * @return string
+     */
+    public function storeUser($user)
+    {
+        return $this->performRequest('POST', "/api/users", $user);
+    }
+
+    /**
      * Destroy user
      * @return string
      */
